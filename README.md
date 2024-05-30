@@ -1,2 +1,4 @@
-# EILLS
-The code for our paper ``Environment Invariant Linear Least Squares''
+# Environment Invariant Linear Least Squares
+
+The script to reproduce the illustration section in our paper ``Environment Invariant Linear Least Squares''
+
