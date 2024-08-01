@@ -17,7 +17,7 @@ color_tuple = [
 	'#6bb392',  # green
 	'#e5a84b',   # yellow
 ]
-results = np.load('eills_demo_large.npy')
+results = np.load('eills_demo.npy')
 dim_x = 12
 
 env1_model = StructuralCausalModel1(dim_x + 1)
@@ -29,35 +29,21 @@ X_cov = np.matmul(X1_test.T, X1_test) / 20000 + np.matmul(X2_test.T, X2_test) / 
 num_n = results.shape[0]
 num_sml = results.shape[1]
 
-vec_n = [100, 300, 700, 1000, 2000]
-method_name = ['EILLS', "ICP", "Anchor", "IRM", "PLS"]
-method_idx = [0, 5, 7, 6, 9]
+vec_n = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000]
+method_name = [r"$S^*$", r"$G$"]
 
 lines = [
-	'solid',
-	'solid',
-	'dotted',
 	'dotted',
 	'dashed',
-	'dotted'
 ]
 
 markers = [
-	'D',
-	'o',
-	'P',
-	's',
-	'x',
-	'<'
+	'+', 'x'
 ]
 
 colors = [
 	'#05348b',
-	'#6bb392',
-	'#9acdc4',
-	'#ec813b',
-	'#e5a84b',
-	'#6bb392'
+	'#ae1908',
 ]
 
 fig = plt.figure(figsize=(5, 6))
@@ -67,23 +53,22 @@ ax1.set_ylabel(r"$\|\bar{\Sigma}^{1/2}(\hat{\beta} - \beta^*)\|_2^2$")
 
 dim_x = 12
 true_coeff = np.array([3, 2, -0.5] + [0] * 9)
+
 #true_coeff = np.reshape(true_coeff, (1, 1, dim_x))
 
-for (j, mid) in enumerate(method_idx):
-	metric = []
-	for i in range(len(vec_n)):
-		measures = []
-		for k in range(num_sml):
-			measures.append(mydist(X_cov, results[i, k, mid, :] - true_coeff))
-		metric.append(np.mean(measures))
-	ax1.plot(vec_n, metric, linestyle=lines[j], marker=markers[j], label=method_name[j], color=colors[j])
+print(np.mean(np.abs(results[:, :, 0, 0:3]) > 0, axis=(1,2)) * 3)
+print(np.mean(np.abs(results[:, :, 0, 6:9]) > 0, axis=(1,2)) * 3)
+
+ax1.plot(vec_n, np.mean(np.abs(results[:, :, 0, 0:3]) > 0, axis=(1,2)) * 3, 
+			linestyle=lines[0], marker=markers[0], label=method_name[0], color=colors[0])
+ax1.plot(vec_n, np.mean(np.abs(results[:, :, 0, 6:9]) > 0, axis=(1,2)) * 3, 
+			linestyle=lines[1], marker=markers[1], label=method_name[1], color=colors[1])
 
 plt.xticks(fontsize=12)
 plt.yticks(fontsize=12)
 ax1.set_xlabel('$n$')
-ax1.set_yscale("log")
-ax1.set_xscale("log")
+plt.ylim((-0.2, 3.2))
+ax1.set_ylabel('number of selected variables')
 
 ax1.legend(loc='best')
-plt.show()
-#plt.savefig("l2error_n_sigma.pdf")
+plt.savefig("fig3c.pdf")

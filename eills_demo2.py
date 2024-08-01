@@ -15,7 +15,7 @@ dim_z = dim_x + 1
 models = [StructuralCausalModel1(dim_z), StructuralCausalModel2(dim_z)]
 true_coeff = np.array([3, 2, -0.5] + [0] * (dim_z - 4))
 
-candidate_n = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1500, 2000]
+candidate_n = [100, 300, 700, 1000, 2000]
 set_s_star = [0, 1, 2]
 set_g = [6, 7, 8]
 set_lse = [6, 7, 8, 9]
@@ -26,15 +26,20 @@ sets_interested = [
 	set_lse
 ]
 
-num_repeats = 500
+num_repeats = 300
 
 np.random.seed(0)
 
 methods = [
 	eills,
+	fair,
 	eills_refit,
 	lse_s_star,
 	lse_gc,
+	oracle_icp,
+	oracle_irm,
+	oracle_anchor,
+	causal_dantzig,
 	erm
 ]
 
@@ -57,6 +62,6 @@ for (ni, n) in enumerate(candidate_n):
 			# restore the estimated coeffs
 			result[ni, t, mid, :] = beta
 
-np.save('eills_demo.npy', result)
+np.save('eills_demo2.npy', result)
 
 

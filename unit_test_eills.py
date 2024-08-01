@@ -2,11 +2,17 @@ from data.model import *
 from methods.brute_force import greedy_search, brute_force, pooled_least_squares, support_set
 from methods.predessors import *
 from methods.eills_gumbel import *
+from demo_wrapper import *
 import numpy as np
 import time
 from utils import get_linear_SCM, get_SCM, get_nonlinear_SCM
+import argparse
 
-mode = 1
+parser = argparse.ArgumentParser()
+parser.add_argument("--mode", help="mode", type=int, default=1)
+args = parser.parse_args()
+
+mode = args.mode
 
 import matplotlib.pyplot as plt
 from matplotlib import rc

@@ -112,10 +112,10 @@ def causal_dantzig(x_list, y_list, true_para):
 	return np.squeeze(np.matmul(np.linalg.inv(g), z))
 
 def eills(x_list, y_list, true_para=None):
-	return brute_force(x_list, y_list, 36, loss_type='eills')
+	return brute_force(x_list, y_list, 20, loss_type='eills')
 
 def fair(x_list, y_list, true_para=None):
-	return brute_force(x_list, y_list, 36, loss_type='fair')
+	return brute_force(x_list, y_list, 20, loss_type='fair')
 
 def lse_s_star(x_list, y_list, true_para=None):
 	var_set = []

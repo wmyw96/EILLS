@@ -19,7 +19,7 @@ color_tuple = [
 	'#6bb392',  # green
 	'#e5a84b',   # yellow
 ]
-results = np.load('eills_demo_large.npy')
+results = np.load('eills_demo2.npy')
 dim_x = 12
 
 env1_model = StructuralCausalModel1(dim_x + 1)
@@ -84,5 +84,4 @@ ax1.set_ylabel(r"$\|\hat{\beta}_{G}\|_2/\|\bar{\beta}_{G}\|_2$")
 
 
 ax1.legend(loc='best')
-plt.show()
-#plt.savefig("l2error_n_sigma.pdf")
+plt.savefig("fig4b.pdf")
