@@ -1,7 +1,25 @@
 # Environment Invariant Linear Least Squares
 
-The script to reproduce the illustration section in our paper ``Environment Invariant Linear Least Squares''.
+The script to reproduce the illustration section in our paper ``[Environment Invariant Linear Least Squares](https://projecteuclid.org/journals/annals-of-statistics/volume-52/issue-5/Environment-invariant-linear-least-squares/10.1214/24-AOS2435.full)''. We offer the implementations of brute force search and gumbel approximation at [brute_force.py](methods/brute_force.py) and [eills_gumbel.py](methods/eills_gumbel.py), respectively.
 
+To cite our paper
+
+```bibtex
+@article{fan2024environment,
+    AUTHOR = {Jianqing Fan and Cong Fang and Yihong Gu and Tong Zhang},
+     TITLE = {Environment invariant linear least squares},
+   JOURNAL = {The Annals of Statistics},
+      YEAR = {2024},
+    VOLUME = {52},
+    NUMBER = {5},
+     PAGES = {2268-2292},
+      ISSN = {0090-5364},
+       DOI = {10.1214/24-AOS2435},
+      SICI = {0090-5364(2024)52:5<2268:EILLS>2.0.CO;2-7},
+}
+'''
+
+The remaining are the instructions to reproduce the results in the paper.
 
 ## Reproduce the results in Section 5
 
