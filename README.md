@@ -17,9 +17,9 @@ To cite our paper
        DOI = {10.1214/24-AOS2435},
       SICI = {0090-5364(2024)52:5<2268:EILLS>2.0.CO;2-7},
 }
-'''
+```
 
-The remaining are the instructions to reproduce the results in the paper.
+The remainings are the instructions to reproduce the results in the paper.
 
 ## Reproduce the results in Section 5
 
